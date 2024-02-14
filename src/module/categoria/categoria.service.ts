@@ -38,5 +38,11 @@ export class CategoriaService {
 
     await this.categoriaRepository.remove(existingCategoria);
   }
-
+  async findById(id_categoria: number): Promise<Categoria | null> {
+    const ciudad = await this.categoriaRepository.findOne({where: {id_categoria}});
+    if (!ciudad) {
+      throw new NotFoundException(`Ciudad con ID ${id_categoria} no se encuentra en la lista.`);
+    }
+    return await this.categoriaRepository.findOne({where: {id_categoria}});
+  }
 }
