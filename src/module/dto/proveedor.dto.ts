@@ -8,4 +8,5 @@ export class ProveedorDto{
     readonly encargado:string;
     readonly nro_encargado:string;
     readonly fk_ciudad:number;
+    readonly disponible:boolean;
 }
