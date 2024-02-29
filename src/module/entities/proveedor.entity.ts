@@ -1,5 +1,5 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryColumn } from 'typeorm';
-import { Producto } from './producto.entity';
+import { Productos } from './producto.entity';
 import { Ciudad } from './ciudad.entity';
 
 @Entity()
@@ -23,6 +23,6 @@ export class Proveedor {
     fk_ciudad: number;
     @Column()
     disponible:boolean
-    @OneToMany(()=>Producto, (producto)=>producto.fk_ruc)
-    productos:Producto[]
+    @OneToMany(()=>Productos, (productos)=>productos.fk_ruc)
+    productos:Productos[]
 }

@@ -1,3 +1,6 @@
+import { Categoria } from "../entities/categoria.entity";
+import { Proveedor } from "../entities/proveedor.entity";
+
 export class ProductoDto{
     readonly codigo: string;
     readonly fk_ruc: string;

@@ -6,6 +6,8 @@ import { CategoriasModule } from './module/categoria/categoria.module';
 import { ProductosModule } from './module/productos/productos.module';
 import { ProveedorModule } from './module/proveedor/proveedor.module';
 import { CiudadModule } from './module/ciudad/ciudad.module';
+import { VentaModule } from './module/venta/venta.module';
+import { ClienteModule } from './module/cliente/cliente.module';
 
 @Module({
   imports: [
@@ -22,7 +24,9 @@ import { CiudadModule } from './module/ciudad/ciudad.module';
     CategoriasModule,
     ProductosModule,
     ProveedorModule,
-    CiudadModule
+    CiudadModule,
+    VentaModule,
+    ClienteModule
   ],
   controllers: [AppController],
   providers: [AppService],
