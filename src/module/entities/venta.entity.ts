@@ -12,5 +12,8 @@ export class Venta {
   @ManyToOne(() => Cliente, (cliente) => cliente.venta)
   @JoinColumn({ name: 'fk_cliente', referencedColumnName: 'id_cliente' }) // Ajustado para reflejar el nombre de la columna y la referencia
   fk_cliente: Cliente;
-
+  @Column()
+  fecha_venta:Date
+  @Column()
+  nro_factura:string;
 }

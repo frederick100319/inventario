@@ -8,6 +8,7 @@ import { ProveedorModule } from './module/proveedor/proveedor.module';
 import { CiudadModule } from './module/ciudad/ciudad.module';
 import { VentaModule } from './module/venta/venta.module';
 import { ClienteModule } from './module/cliente/cliente.module';
+import { PersonaModule } from './module/persona/persona.module';
 
 @Module({
   imports: [
@@ -26,7 +27,8 @@ import { ClienteModule } from './module/cliente/cliente.module';
     ProveedorModule,
     CiudadModule,
     VentaModule,
-    ClienteModule
+    ClienteModule,
+    PersonaModule
   ],
   controllers: [AppController],
   providers: [AppService],
