@@ -9,6 +9,7 @@ import { CiudadModule } from './module/ciudad/ciudad.module';
 import { VentaModule } from './module/venta/venta.module';
 import { ClienteModule } from './module/cliente/cliente.module';
 import { PersonaModule } from './module/persona/persona.module';
+import { UsuarioModule } from './module/usuario/usuario.module';
 
 @Module({
   imports: [
@@ -28,7 +29,8 @@ import { PersonaModule } from './module/persona/persona.module';
     CiudadModule,
     VentaModule,
     ClienteModule,
-    PersonaModule
+    PersonaModule,
+    UsuarioModule
   ],
   controllers: [AppController],
   providers: [AppService],
