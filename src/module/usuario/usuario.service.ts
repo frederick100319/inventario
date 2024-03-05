@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Usuario } from '../entities/usuario.entity';
 import { UsuarioDto } from '../dto/usuario.dto';
+import * as bcrypt from 'bcryptjs';
 
 @Injectable()
 export class UsuarioService {
@@ -12,7 +13,15 @@ export class UsuarioService {
   ) {}
 
   async createUser(usuarioDto: UsuarioDto): Promise<Usuario> {
-    const usuario = this.usuarioRepository.create(usuarioDto);
+    const hashedPassword = await bcrypt.hash(usuarioDto.contrasena, 10);
+    const usuario = this.usuarioRepository.create({
+        cedula:usuarioDto.cedula,
+        nombre:usuarioDto.nombre,
+        apellido:usuarioDto.apellido,
+        email:usuarioDto.email,
+        contrasena:hashedPassword,
+        fk_rol:usuarioDto.fk_rol
+    });
     return this.usuarioRepository.save(usuario);
   }
 
@@ -29,10 +38,22 @@ export class UsuarioService {
   }
 
   async updateUser(cedula: string, usuarioDto: UsuarioDto): Promise<Usuario> {
-    const usuario = await this.getUserByCedula(cedula);
-    this.usuarioRepository.merge(usuario, usuarioDto);
+    const usuario = await this.usuarioRepository.findOne({ where: { cedula } });
+    if (!usuario) {
+      throw new NotFoundException('Usuario no encontrado');
+    }
+    // Actualizar todos los datos del usuario
+    Object.assign(usuario, usuarioDto);
+    // Verificar si se proporcionó una nueva contraseña
+    if (usuarioDto.contrasena) {
+      // Cifrar la nueva contraseña
+      const hashedPassword = await bcrypt.hash(usuarioDto.contrasena, 10);
+      usuario.contrasena = hashedPassword;
+    }
+
     return this.usuarioRepository.save(usuario);
   }
+  
 
   async deleteUser(cedula: string): Promise<void> {
     const result = await this.usuarioRepository.delete({ cedula });

@@ -29,6 +29,10 @@ export class UsuarioController {
   async updateUser(@Param('cedula') cedula: string, @Body() usuarioDto: UsuarioDto) {
     return this.usuarioService.updateUser(cedula, usuarioDto);
   }
+  
+  
+  
+  
 
   @Delete(':cedula')
   async deleteUser(@Param('cedula') cedula: string) {
