@@ -10,6 +10,7 @@ import { VentaModule } from './module/venta/venta.module';
 import { ClienteModule } from './module/cliente/cliente.module';
 import { PersonaModule } from './module/persona/persona.module';
 import { UsuarioModule } from './module/usuario/usuario.module';
+import { AuthModule } from './module/auth/auth.module';
 
 @Module({
   imports: [
@@ -30,7 +31,8 @@ import { UsuarioModule } from './module/usuario/usuario.module';
     VentaModule,
     ClienteModule,
     PersonaModule,
-    UsuarioModule
+    UsuarioModule,
+    AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -28,6 +28,10 @@ export class UsuarioService {
   async findAll(): Promise<Usuario[]> {
     return this.usuarioRepository.find({ relations: ['fk_rol'] });
   }
+  
+  async validatePassword(plainPassword: string, hashedPassword: string): Promise<boolean> {
+    return bcrypt.compare(plainPassword, hashedPassword);
+  }
 
   async getUserByCedula(cedula: string): Promise<Usuario> {
     const usuario = await this.usuarioRepository.findOne({ where: { cedula }, relations: ['fk_rol'] });
