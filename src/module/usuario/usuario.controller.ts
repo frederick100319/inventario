@@ -10,7 +10,7 @@ export class UsuarioController {
   @Post()
   @UsePipes(new ValidationPipe())
   async createUser(@Body() usuarioDto: UsuarioDto) {
-    usuarioDto.fk_rol = 1;
+    usuarioDto.fk_rol= 1;
     return this.usuarioService.createUser(usuarioDto);
   }
 

@@ -1,4 +1,5 @@
 import { IsEmail, IsStrongPassword } from 'class-validator';
+import { Rol } from '../entities/rol.entity';
 
 export class UsuarioDto{
     cedula:string;

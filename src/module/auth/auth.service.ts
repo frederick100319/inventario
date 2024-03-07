@@ -1,9 +1,11 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable, UnauthorizedException, ConflictException, NotFoundException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UsuarioService } from '../usuario/usuario.service';
 import { LoginDto } from '../dto/login.dto';
 import { JwtPayload } from './interfaces/jwt-payload.interface';
 import { AuthResponse } from './interfaces/auth-response.interface';
+import { UsuarioDto } from '../dto/usuario.dto';
+import { RegisterResponse } from './interfaces/auth-response.interface';
 
 @Injectable()
 export class AuthService {
@@ -27,8 +29,9 @@ export class AuthService {
       throw new UnauthorizedException('Credenciales inválidas');
     }
 
+
     // Generar el token de acceso
-    const payload: JwtPayload = { sub: usuario.cedula, email: usuario.email, role: usuario.fk_rol.toString() };
+    const payload: JwtPayload = { sub: usuario.cedula, username: usuario.email, role: usuario.fk_rol.toString() };
     const accessToken = this.jwtService.sign(payload);
 
     // Devolver la respuesta de autenticación
@@ -38,9 +41,43 @@ export class AuthService {
       user: {
         userId: usuario.cedula,
         username: usuario.nombre,
-        role: usuario.fk_rol.toString(),
+        role: usuario.fk_rol,
       },
     };
   }
+  async register(usuarioDto: UsuarioDto): Promise<RegisterResponse> {
+    try {
+      // Verificar si el usuario ya existe
+      const { cedula } = usuarioDto;
+      const existingUser = await this.usuarioService.getUserByCedula(cedula);
+      if (existingUser) {
+        throw new ConflictException('Este usuario ya está registrado');
+      }
+    } catch (error) {
+      // Manejar el caso de que no se encuentre el usuario
+      if (error instanceof NotFoundException) {
+        // Usuario no encontrado, proceder con la creación
+        const newUser = await this.usuarioService.createUser(usuarioDto);
+  
+        // Generar el token de acceso
+        const payload = { sub: newUser.cedula, email: newUser.email, role: newUser.fk_rol.toString() };
+        const accessToken = this.jwtService.sign(payload);
+  
+        // Devolver la respuesta de registro
+        return { 
+            accessToken,
+            expiresIn: 1,
+            user: {
+                cedula: newUser.cedula,
+                nombre: newUser.nombre,
+                apellido: newUser.apellido,
+                email: newUser.email,
+                rol: newUser.fk_rol.toString()
+            }
+        };
+      } else {
+        throw error;
+      }
+    }
 }
-
+}
