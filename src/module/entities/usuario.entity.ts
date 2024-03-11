@@ -18,4 +18,8 @@ export class Usuario {
   @ManyToOne(() => Rol, (rol) => rol.usuario)
   @JoinColumn({ name: 'fk_rol', referencedColumnName: 'id_rol' }) // Ajustado para reflejar el nombre de la columna y la referencia
   fk_rol: number;
+  @Column()
+  resetToken: string
+  @Column()
+  resetTokenExpira:Date;
 }

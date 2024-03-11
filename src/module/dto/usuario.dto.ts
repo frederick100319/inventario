@@ -10,5 +10,7 @@ export class UsuarioDto{
     @IsStrongPassword()
     contrasena:string;
     fk_rol:number;
+    resetToken:string;
+    resetTokenExpira:Date;
 
 }

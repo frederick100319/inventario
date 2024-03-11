@@ -30,13 +30,19 @@ export class UsuarioController {
     return this.usuarioService.updateUser(cedula, usuarioDto);
   }
   
-  
-  
-  
-
   @Delete(':cedula')
   async deleteUser(@Param('cedula') cedula: string) {
     return this.usuarioService.deleteUser(cedula);
+  }
+  
+  @Post('reset-password-request')
+  async iniciarRecuperacionContrasena(@Body('cedula') cedula: string, @Body('email') email: string): Promise<void> {
+    await this.usuarioService.iniciarRecuperacionContrasena(cedula, email);
+  }
+
+  @Post('reset-password/:token')
+  async resetPassword(@Param('token') token: string, @Body('nuevaContrasena') nuevaContrasena: string): Promise<void> {
+    await this.usuarioService.resetPassword(token, nuevaContrasena);
   }
 }
 
