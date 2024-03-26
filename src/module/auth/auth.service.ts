@@ -37,7 +37,7 @@ export class AuthService {
     // Devolver la respuesta de autenticación
     return {
       accessToken,
-      expiresIn: 1,
+      expiresIn: 3600,
       user: {
         userId: usuario.cedula,
         username: usuario.nombre,
@@ -66,7 +66,7 @@ export class AuthService {
         // Devolver la respuesta de registro
         return { 
             accessToken,
-            expiresIn: 1,
+            expiresIn: 3600,
             user: {
                 cedula: newUser.cedula,
                 nombre: newUser.nombre,

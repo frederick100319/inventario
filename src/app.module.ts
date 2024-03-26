@@ -12,6 +12,7 @@ import { PersonaModule } from './module/persona/persona.module';
 import { UsuarioModule } from './module/usuario/usuario.module';
 import { AuthModule } from './module/auth/auth.module';
 
+
 @Module({
   imports: [
     TypeOrmModule.forRoot({
