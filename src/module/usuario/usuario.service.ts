@@ -66,7 +66,6 @@ export class UsuarioService {
   }
 
   async iniciarRecuperacionContrasena(cedula: string, email: string): Promise<string> {
-    // Verificar si la combinación de cédula y correo electrónico existe en la base de datos
     const usuario = await this.usuarioRepository.findOne({ where: { cedula, email } });
     if (!usuario) {
         throw new NotFoundException('No se encontró ningún usuario con la cédula y el correo electrónico proporcionados.');
@@ -96,7 +95,7 @@ export class UsuarioService {
       from: 'torcan.recuperacion@gmail.com', // Cambia esto por tu dirección de correo electrónico
       to: email,
       subject: 'Recuperación de Contraseña',
-      text: `Para restablecer tu contraseña, haz clic en el siguiente enlace: http://localhost:3000/usuarios/reset-password/${resetToken}`,
+      text: `Para restablecer tu contraseña, haz clic en el siguiente enlace: http://localhost:4200/password-reset/${resetToken}`,
     };
     await transporter.sendMail(mailOptions);
     return "Email enviado con éxito"

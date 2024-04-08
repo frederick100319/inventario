@@ -15,7 +15,10 @@ export class VentaController {
   async findAll() {
     return this.ventaService.findAll();
   }
-
+  @Get('total')
+  async getTotalCities(): Promise<number> {
+    return await this.ventaService.getTotalDeals();
+  }
   @Get(':id')
   async findOne(@Param('id') id: number) {
     return this.ventaService.findOne(id);

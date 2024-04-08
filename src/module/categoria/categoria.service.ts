@@ -14,7 +14,9 @@ export class CategoriaService {
   async findAll(): Promise<Categoria[]> {
     return await this.categoriaRepository.find();
   }
-
+  async getTotalCategories(): Promise<number> {
+    return await this.categoriaRepository.count();
+  }
   async create(categoriaDto: CategoriaDto): Promise<Categoria> {
     const categoria = this.categoriaRepository.create(categoriaDto);
     return await this.categoriaRepository.save(categoria);

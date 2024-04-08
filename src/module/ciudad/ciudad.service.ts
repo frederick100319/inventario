@@ -51,5 +51,8 @@ export class CiudadService {
     }
     return await this.ciudadRepository.findOne({where: {id_ciudad}});
   }
+  async getTotalCities(): Promise<number> {
+    return await this.ciudadRepository.count();
+  }
 }
 

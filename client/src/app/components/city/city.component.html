@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="table-container">
+    <table class="tables">
+      <thead>
+        <tr>
+          <th colspan="3">
+            <h1 class="title text-center">Listado de Ciudades:</h1>
+            <form class="d-flex align-items-center" (submit)="onSearch()">
+              <input class="form-control me-2" type="search" placeholder="Buscar ciudad..." aria-label="Search" [(ngModel)]="searchTerm" name="searchTerm">
+              <button class="btn btn-secondary me-2" type="submit">Buscar</button>
+            </form>
+            <div class="mt-2">
+              <button class="btn btn-success w-100" type="submit"><i class="fa-solid fa-plus"></i> Añadir ciudad</button>
+            </div>
+          </th>
+        </tr>
+        <tr>
+          <th class="text-center">ID</th>
+          <th>Nombre</th>
+          <th class="text-center">Acciones</th> <!-- Columna de acciones -->
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngIf="searchTerm !== ''">
+          <tr *ngFor="let city of cities">
+            <td *ngIf="city.nombre.toLowerCase().includes(searchTerm.toLowerCase())" class="text-center">{{ city.id_ciudad }}</td>
+            <td *ngIf="city.nombre.toLowerCase().includes(searchTerm.toLowerCase())">{{ city.nombre }}</td>
+            <td *ngIf="city.nombre.toLowerCase().includes(searchTerm.toLowerCase())" class="text-center"><button class="btn btn-primary" (click)="editCity(city)">Editar</button></td> <!-- Botón de editar -->
+          </tr>
+        </ng-container>
+        <ng-container *ngIf="searchTerm === ''">
+          <tr *ngFor="let city of cities">
+            <td class="text-center">{{ city.id_ciudad }}</td>
+            <td>{{ city.nombre }}</td>
+            <td class="text-center"><button class="btn btn-primary" (click)="editCity(city)"><i class="fa-solid fa-pen-to-square"></i> Editar</button></td> <!-- Botón de editar -->
+          </tr>
+        </ng-container>
+      </tbody>
+      
+    </table>
+  
+  </div>
+</div>
+
+
+
+
+
+
+  
+  
+  
+  
+  

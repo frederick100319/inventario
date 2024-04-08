@@ -55,4 +55,7 @@ export class ProductoService {
     await this.productoRepository.remove(producto);
     return producto;
   }
+  async getTotalAvailableProducts(): Promise<number> {
+    return await this.productoRepository.count({where:{ disponible: true }});
+  }
 }

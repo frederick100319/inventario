@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs'; // Importa throwError desde RxJS
 import { catchError } from 'rxjs/operators';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -24,5 +25,6 @@ export class AuthService {
       })
     );
   }
+
 }
 

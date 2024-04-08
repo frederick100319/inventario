@@ -22,6 +22,9 @@ export class ProveedorService {
     return this.proveedorRepository.findOne({where: {ruc}});
   }
 
+  async getTotalSuppliers(): Promise<number> {
+    return await this.proveedorRepository.count();
+  }
   
   async create(proveedorDto: ProveedorDto): Promise<Proveedor> {
     const proveedor: Partial<Proveedor> = {

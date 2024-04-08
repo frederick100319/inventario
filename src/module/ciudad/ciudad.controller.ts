@@ -18,7 +18,10 @@ export class CiudadController {
   async create(@Body() createCiudadDto: CiudadDto): Promise<Ciudad> {
     return this.ciudadService.create(createCiudadDto);
   }
-
+  @Get('total')
+  async getTotalAvailableProducts(): Promise<number> {
+    return await this.ciudadService.getTotalCities();
+  }
   @Put(':id')
   async update(@Param('id') id: number, @Body() updateCiudadDto: CiudadDto): Promise<Ciudad> {
     return this.ciudadService.update(id, updateCiudadDto);
@@ -33,6 +36,7 @@ export class CiudadController {
   async findById(@Param('id') id: number): Promise<Ciudad | null> {
     return this.ciudadService.findById(id);
   }
+
 }
 
 

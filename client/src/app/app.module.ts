@@ -7,13 +7,23 @@ import { HomeComponent } from './components/home/home.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ToastrModule } from 'ngx-toastr'
+import { PasswordResetComponent } from './components/password-reset/password-reset.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { CityComponent } from './components/city/city.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AuthComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    PasswordResetComponent,
+    NavbarComponent,
+    SidebarComponent,
+    CityComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -21,6 +31,7 @@ import { ToastrModule } from 'ngx-toastr'
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [
     provideClientHydration()

@@ -24,6 +24,7 @@ import { AuthModule } from './module/auth/auth.module';
       database: 'inventario',
       autoLoadEntities: true,
       synchronize: false,
+
     }),
     CategoriasModule,
     ProductosModule,

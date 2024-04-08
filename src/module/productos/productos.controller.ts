@@ -16,7 +16,10 @@ export class ProductoController {
   async findAll(): Promise<Productos[]> {
     return this.productoService.findAll();
   }
-
+  @Get('total')
+  async getTotalAvailableProducts(): Promise<number> {
+    return await this.productoService.getTotalAvailableProducts();
+  }
   @Get(':codigo')
   async findOne(@Param('codigo') codigo: string): Promise<Productos | undefined> {
     return this.productoService.findOne(codigo);
@@ -31,4 +34,5 @@ export class ProductoController {
   async remove(@Param('codigo') codigo: string): Promise<Productos | undefined> {
     return this.productoService.remove(codigo);
   }
+
 }

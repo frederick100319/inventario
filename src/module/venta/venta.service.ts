@@ -13,13 +13,11 @@ export class VentaService {
   ) {}
 
   async create(ventaDto: VentaDto): Promise<Venta> {
-    // Verificar que la fecha de venta no sea mayor que la fecha actual
+
     if (ventaDto.fecha_venta > new Date()) {
       throw new BadRequestException('La fecha de venta no puede ser en el futuro');
     }
-    // Convertir VentaDto a DeepPartial<Venta> usando plainToClass
     const venta = plainToClass(Venta, ventaDto);
-    // Crear la venta si la validación pasa
     return this.ventaRepository.save(venta);
   }
 
@@ -29,6 +27,10 @@ export class VentaService {
 
   async findOne(id_venta: number): Promise<Venta | undefined> {
     return this.ventaRepository.findOne({where:{id_venta}, relations: ['fk_codigo', 'fk_cliente'] } );
+  }
+
+  async getTotalDeals(): Promise<number> {
+    return await this.ventaRepository.count();
   }
 
   async update(id_venta: number, ventaDto: VentaDto): Promise<Venta | undefined> {

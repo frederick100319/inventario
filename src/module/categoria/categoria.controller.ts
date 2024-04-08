@@ -10,6 +10,10 @@ export class CategoriaController {
   findAll() {
     return this.categoriaService.findAll();
   }
+  @Get('total')
+  async getTotalCities(): Promise<number> {
+    return await this.categoriaService.getTotalCategories();
+  }
   @Get(':id')
   async findById(@Param('id') id: number): Promise<Categoria | null> {
     return this.categoriaService.findById(id);

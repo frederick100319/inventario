@@ -18,6 +18,11 @@ export class ClienteController {
     return this.clienteService.findAll();
   }
 
+  @Get('total')
+  async getTotalCities(): Promise<number> {
+    return await this.clienteService.getTotalClients();
+  }
+
   @Get(':id')
   findOne(@Param('id', ParseIntPipe) id: number): Promise<Cliente> {
     return this.clienteService.findOne(id);

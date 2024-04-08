@@ -1,0 +1,30 @@
+/* Estilos para la tabla */
+.container{
+    margin-top: 5rem;
+}
+.title {
+    color: #f2efe6; /* Texto del título */
+}
+.tables {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.tables th {
+    background-color: rgba(34, 34, 34, 0.9);
+    padding: 8px;
+    border: 1px solid #dee2e6;
+    color: #f2efe6;
+}
+
+.tables td {
+    padding: 8px;
+    border: 1px solid #dee2e6;
+    color: #f2efe6;
+    background-color: rgba(145, 151, 158, 0.9);
+}
+.divider{
+    margin-top: 18px;
+}
+
+

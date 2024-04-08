@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth/auth.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { userInfo } from 'os';
 
 @Component({
   selector: 'app-auth', 
@@ -20,7 +21,7 @@ formularioLogin(){
 
     this.forma=this.fb.group({
       cedula:['', [Validators.required,Validators.minLength(10), Validators.maxLength(10), Validators.pattern("[0-9]+")]],
-      contrasena:['']
+      contrasena:['',[Validators.required]]
     })
   }
   get cedulaInvalid() {
@@ -37,7 +38,7 @@ formularioLogin(){
           console.log("Respuesta del token:", response.accessToken);
           if (response && response.accessToken) {
             localStorage.setItem('token', response.accessToken);
-            console.log(response.accessToken);
+            localStorage.setItem('usuario', response.user.userId)
             this.router.navigate(['/home']);
           } else {
             console.error('La respuesta no contiene un token válido:', response);
@@ -52,6 +53,8 @@ formularioLogin(){
             text: error,
             iconColor:'#124074',
             confirmButtonColor:'#124074',
+            
+          
           });
         }
       );

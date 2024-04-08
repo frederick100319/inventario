@@ -30,6 +30,10 @@ export class ClienteService {
     return this.clienteRepository.findOne({where:{id_cliente}});
   }
 
+  async getTotalClients(): Promise<number> {
+    return await this.clienteRepository.count();
+  }
+
   async update(id_cliente: number, clienteDto: ClienteDto): Promise<Cliente> {
     // Verificar el tipo de persona y la longitud de cedula_ruc
     if (clienteDto.fk_persona === 1 && clienteDto.cedula_ruc.length !== 10) {
