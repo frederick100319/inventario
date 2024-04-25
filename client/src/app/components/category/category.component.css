@@ -5,7 +5,7 @@
 }
 
 .title {
-    color: #f2efe6; /* Texto del título */
+    color: #f2efe6; 
 }
 .tables {
     width: 100%;
@@ -29,17 +29,17 @@
 
 .tables th:nth-child(1),
 .tables td:nth-child(1) {
-  width: 10%; /* Ancho más pequeño para la primera columna */
+  width: 10%;
 }
 
 .tables th:nth-child(2),
 .tables td:nth-child(2) {
-  width: 70%; /* Ancho más grande para la segunda columna */
+  width: 70%; 
 }
 
 .tables th:nth-child(3),
 .tables td:nth-child(3) {
-  width: 20%; /* Ancho mediano para la tercera columna */
+  width: 20%; 
 }
 
 .fade-in {
@@ -54,6 +54,3 @@
     opacity: 1;
   }
 }
-
-
-  

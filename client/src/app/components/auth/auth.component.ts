@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth/auth.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
-import { userInfo } from 'os';
+
 
 @Component({
   selector: 'app-auth', 

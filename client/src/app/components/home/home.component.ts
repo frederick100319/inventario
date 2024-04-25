@@ -80,14 +80,14 @@ export class HomeComponent implements OnInit {
         countName: 'Ciudades',
         name: 'Ciudad',
         icon: 'fa-solid fa-mountain-city',
-        ruta: '/home'
+        ruta: '/city'
       },
       {
         count: this.totalSuppliers,
         countName: 'Proveedores',
         name: 'Proveedor',
         icon: 'fa-solid fa-users',
-        ruta: '/home'
+        ruta: '/suppliers'
       },
       {
         count: this.totalProducts,
@@ -101,7 +101,7 @@ export class HomeComponent implements OnInit {
         countName: 'Categorías',
         name: 'Categoría',
         icon: 'fa-solid fa-boxes-stacked',
-        ruta: '/home'
+        ruta: '/category'
       },
       {
         count: this.totalClients,

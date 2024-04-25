@@ -19,13 +19,13 @@ export class SidebarComponent implements OnInit{
     number:'2',
     name:'Ciudad',
     icon:"fa-solid fa-mountain-city",
-    url:'/home'
+    url:'/city'
   },  
   {
     number:'3',
     name:'Proveedor',
     icon:'fa-solid fa-users',
-    url:'/home'
+    url:'/suppliers'
   },
   {
     number:'4',
@@ -37,7 +37,7 @@ export class SidebarComponent implements OnInit{
     number:'5',
     name:'Categoría',
     icon:'fa-solid fa-boxes-stacked',
-    url:'/home'
+    url:'/category'
   },
   {
     number:'6',

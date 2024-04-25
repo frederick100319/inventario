@@ -1,3 +1,4 @@
+import { Ciudad } from "../entities/ciudad.entity";
 
 export class ProveedorDto{
     readonly ruc:string;
@@ -7,6 +8,6 @@ export class ProveedorDto{
     readonly calle_2:string;
     readonly encargado:string;
     readonly nro_encargado:string;
-    readonly fk_ciudad:number;
+    readonly fk_ciudad:Ciudad;
     readonly disponible:boolean;
 }

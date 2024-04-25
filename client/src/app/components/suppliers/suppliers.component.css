@@ -1,0 +1,97 @@
+
+.container{
+    margin-top: 5rem;
+    padding-bottom: 15px;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(12, 12, 12, 0.5);
+  z-index: 9999;
+  overflow-y: auto; /* Permitir desplazamiento vertical dentro del overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+app-form{
+  max-width: calc(100% - 40px); /* Establecer un ancho máximo para el formulario */
+  width: 90%; /* Ajustar el ancho del formulario para adaptarse a diferentes tamaños de pantalla */
+  max-height: calc(100% - 40px); /* Reducir el tamaño del formulario para dejar espacio para el scroll del overlay */
+}
+
+/* Estilos para hacer el overlay responsivo */
+@media screen and (max-width: 768px) {
+  table th,
+  table td {
+    font-size: 14px; /* Reducido el tamaño de la fuente en pantallas pequeñas */
+  }
+
+  .overlay {
+    overflow-x: hidden;
+  }
+}
+.boom {
+  animation: boom 0.5s;
+}
+
+@keyframes boom {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.title {
+    color: #f2efe6; 
+}
+.tables {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.tables th {
+    background-color: rgba(34, 34, 34, 0.9);
+    padding: 8px;
+    border: 1px solid #dee2e6;
+    color: #f2efe6;
+}
+
+.tables td {
+    padding: 8px;
+    border: 1px solid #dee2e6;
+    color: #f2efe6;
+    background-color: rgba(145, 151, 158, 0.9);
+    text-transform: capitalize;
+}
+
+.tables th,
+.tables td {
+  width: calc(100% / 7); /* Divide el ancho en partes iguales para 7 hijos */
+}
+
+
+
+.fade-in {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}

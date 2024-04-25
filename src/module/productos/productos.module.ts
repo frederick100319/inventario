@@ -7,9 +7,10 @@ import { Productos } from '../entities/producto.entity';
 import { Proveedor } from '../entities/proveedor.entity';
 import { Venta } from '../entities/venta.entity';
 import { Cliente } from '../entities/cliente.entity';
+import { Seriales } from '../entities/serial.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Categoria, Productos, Proveedor, Venta, Cliente])],
+  imports: [TypeOrmModule.forFeature([Categoria, Productos, Proveedor, Venta, Cliente,Seriales])],
   providers: [ProductoService],
   controllers: [ProductoController]
 })

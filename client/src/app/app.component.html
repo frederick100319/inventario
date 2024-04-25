@@ -1,13 +1,19 @@
+<!-- app.component.html -->
 <div class="container-fluid g-0">
-    <app-navbar (sideNavToggled)="sideNavStatus= $event;" *ngIf="isVisible"></app-navbar>
+    <app-navbar (sideNavToggled)="sideNavStatus = $event;" *ngIf="isVisible"></app-navbar>
     <main>
-        <app-sidebar [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open':sideNavStatus}" *ngIf="isVisible"></app-sidebar>
-        <div class="display-area p-3" [ngClass]="{'display-area-shrink':sideNavStatus}">
+        <app-sidebar [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open': sideNavStatus}" *ngIf="isVisible"></app-sidebar>
+        <div class="display-area p-3" [ngClass]="{'display-area-shrink': sideNavStatus}">
+
+
+
             <router-outlet></router-outlet>
         </div>
     </main>
 
 </div>
+
+
 
 
   

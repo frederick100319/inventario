@@ -1,6 +1,7 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryColumn } from 'typeorm';
 import { Cliente } from './cliente.entity';
 import { Productos } from './producto.entity';
+import { Seriales } from './serial.entity';
 
 @Entity()
 export class Venta {
@@ -16,4 +17,6 @@ export class Venta {
   fecha_venta:Date
   @Column()
   nro_factura:string;
+  @OneToMany(()=>Seriales, (seriales)=>seriales.fk_venta)
+  seriales:Seriales[]
 }

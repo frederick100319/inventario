@@ -2,6 +2,7 @@ import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryColumn } from 
 import { Categoria } from './categoria.entity';
 import { Proveedor } from './proveedor.entity';
 import { Venta } from './venta.entity';
+import { Seriales } from './serial.entity';
 
 @Entity()
 export class Productos {
@@ -31,5 +32,6 @@ export class Productos {
     foto_url:string;
     @OneToMany(()=>Venta, (venta)=>venta.fk_codigo)
     venta:Venta[]
-
+    @OneToMany(()=>Seriales,(seriales)=>seriales.fk_producto)
+    seriales:Seriales[]
 }

@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, BadRequestException, ConflictException} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Proveedor } from '../entities/proveedor.entity';
@@ -15,11 +15,11 @@ export class ProveedorService {
     ) {}
 
   async findAll(): Promise<Proveedor[]> {
-    return this.proveedorRepository.find();
+    return this.proveedorRepository.find({ relations: ['fk_ciudad'] });
   }
 
   async findOne(ruc: string): Promise<Proveedor | undefined> {
-    return this.proveedorRepository.findOne({where: {ruc}});
+    return this.proveedorRepository.findOne({where: {ruc}, relations: ['fk_ciudad']});
   }
 
   async getTotalSuppliers(): Promise<number> {
@@ -27,28 +27,41 @@ export class ProveedorService {
   }
   
   async create(proveedorDto: ProveedorDto): Promise<Proveedor> {
+
+    if (proveedorDto.ruc.length !== 13) {
+        throw new BadRequestException('El RUC debe tener exactamente 13 caracteres.');
+    }
+
+
+    const existingProveedor = await this.proveedorRepository.findOne({ where: { ruc: proveedorDto.ruc } });
+    if (existingProveedor) {
+        throw new ConflictException('Ya existe un proveedor con el mismo RUC.');
+    }
+
+
     const proveedor: Partial<Proveedor> = {
-      ruc: proveedorDto.ruc,
-      empresa: proveedorDto.empresa,
-      calle_1: proveedorDto.calle_1,
-      nro_casa: proveedorDto.nro_casa,
-      calle_2: proveedorDto.calle_2,
-      encargado: proveedorDto.encargado,
-      nro_encargado: proveedorDto.nro_encargado,
-      fk_ciudad: proveedorDto.fk_ciudad,
-      disponible: proveedorDto.disponible
+        ruc: proveedorDto.ruc,
+        empresa: proveedorDto.empresa,
+        calle_1: proveedorDto.calle_1,
+        nro_casa: proveedorDto.nro_casa,
+        calle_2: proveedorDto.calle_2,
+        encargado: proveedorDto.encargado,
+        nro_encargado: proveedorDto.nro_encargado,
+        fk_ciudad: proveedorDto.fk_ciudad,
+        disponible: true
     };
     return await this.proveedorRepository.save(proveedor);
-  }
+}
+
   
 
   async update(ruc: string, proveedorDto: ProveedorDto): Promise<Proveedor | undefined> {
-    // Buscar el proveedor por su ruc
+
     const proveedorExistente = await this.proveedorRepository.findOne({where:{ruc}});
   
-    // Verificar si el proveedor existe
+
     if (!proveedorExistente) {
-      throw new Error('Proveedor inexistente') // O lanzar un error adecuado
+      throw new Error('Proveedor inexistente') 
     }
     proveedorExistente.empresa = proveedorDto.empresa;
     proveedorExistente.calle_1 = proveedorDto.calle_1;

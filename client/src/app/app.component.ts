@@ -1,17 +1,19 @@
-import { Component } from '@angular/core';
-import { Router, NavigationStart } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'client';
-  sideNavStatus:boolean=false
-  isVisible:boolean=false
-  
-  constructor(private router: Router ){
+  sideNavStatus: boolean = false;
+  isVisible: boolean = false;
+
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         this.isVisible = !(
@@ -23,3 +25,8 @@ export class AppComponent {
     });
   }
 }
+
+
+
+
+  
