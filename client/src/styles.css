@@ -1,14 +1,1 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-body {
-    min-height: 100vh;
-    background-image: linear-gradient(rgba(18, 64, 116, 0.6), rgba(18, 64, 116, 0.6)), url(./assets/img/Fondo.jpg);
-
-    background-size: cover;
-    background-position: center;
-}
+/* You can add global styles to this file, and also import other style files */
