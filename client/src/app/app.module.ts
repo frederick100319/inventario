@@ -14,13 +14,19 @@ import { ToastModule } from 'primeng/toast';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { PasswordResetComponent } from './components/password-reset/password-reset.component';
+import { ResetAuthComponent } from './components/reset-auth/reset-auth.component';
+import { PasswordModule } from 'primeng/password';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     PasswordResetComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    ResetAuthComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +40,10 @@ import { PasswordResetComponent } from './components/password-reset/password-res
     BrowserAnimationsModule,
     HttpClientModule,
     ToastModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    PasswordModule,
+    IconFieldModule,
+    InputIconModule
   ],
   providers: [
     provideClientHydration(),

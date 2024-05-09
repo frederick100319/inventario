@@ -61,4 +61,10 @@ export class PasswordResetComponent {
   get emailInvalid(): boolean {
     return this.isControlInvalid('email');
   }
+  pageRedirection(){
+    this.loading=true
+    setTimeout(() => {
+      window.location.href='/login';
+    }, 3000);
+  }
 }

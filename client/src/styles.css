@@ -1,4 +1,5 @@
 
+@import "primeicons/primeicons.css";
 body{
     background-image:linear-gradient(rgba(18, 64, 116, 0.6), rgba(18, 64, 116, 0.6)), url('./assets/img/Fondo.jpg');
     background-size: cover;

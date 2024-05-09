@@ -62,11 +62,14 @@ export class LoginComponent {
     const control = this.forma.get(controlName);
     return control ? control.invalid && (control.dirty || control.touched) : false;
   }
+  
   getControlClasses(controlName: string): string {
     return this.isControlInvalid(controlName) ? 'ng-dirty ng-invalid' : '';
   }
   get cedulaInvalid(): boolean {
     return this.isControlInvalid('cedula');
   }
-
+  get contrasenaInvalid(): boolean {
+    return this.isControlInvalid('contrasena');
+  }
 }  
